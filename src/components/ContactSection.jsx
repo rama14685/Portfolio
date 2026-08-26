@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, Terminal, Mail, User, MessageCircle, CheckCircle, Sparkles } from 'lucide-react';
+import { Send, Terminal, Mail, User, MessageCircle, CheckCircle } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { supabase, isSupabaseConfigured } from '../lib/supabaseClient';
 import { soundFx } from '../lib/soundEffects';
@@ -37,7 +37,6 @@ export default function ContactSection() {
       }
     }
 
-    // Sound FX + Confetti Explosion!
     soundFx.playPowerup();
     confetti({
       particleCount: 100,
@@ -56,10 +55,10 @@ export default function ContactSection() {
       {/* Section Header */}
       <div className="text-center mb-10">
         <h2 className="font-press text-2xl md:text-3xl text-cyan-400 mb-2 flex items-center justify-center gap-3">
-          <span>📡</span> TRANSMIT SIGNAL <span>📡</span>
+          <span>📡</span> KONTAK SAYA <span>📡</span>
         </h2>
         <p className="font-vt text-xl text-slate-400">
-          Send a direct message to Player 1's terminal console
+          Kirim pesan langsung untuk diskusi proyek atau penawaran kerja sama
         </p>
       </div>
 
@@ -69,7 +68,7 @@ export default function ContactSection() {
         <div className="bg-black border-2 border-cyan-500 p-3 mb-6 flex items-center justify-between font-press text-xs text-cyan-400">
           <div className="flex items-center gap-2">
             <Terminal className="w-4 h-4 text-cyan-400 animate-pulse" />
-            <span>TRANSMITTER v1.0 // ONLINE</span>
+            <span>KONTAK RAMA EKA S. // ONLINE</span>
           </div>
           <span className="text-[10px] text-slate-500">ENCRYPTION: 128-BIT</span>
         </div>
@@ -78,10 +77,10 @@ export default function ContactSection() {
           <div className="bg-black border-4 border-green-500 p-8 text-center animate-fade-in space-y-4">
             <CheckCircle className="w-16 h-16 text-green-400 mx-auto pixel-float" />
             <h3 className="font-press text-lg text-green-400">
-              TRANSMISSION SUCCESSFUL! ⚡
+              PESAN BERHASIL TERKIRIM! ⚡
             </h3>
             <p className="font-vt text-2xl text-slate-200">
-              Pesan Anda telah berhasil terkirim ke terminal Player 1! Terima kasih sudah menghubungi.
+              Pesan Anda telah berhasil dikirim ke Rama Eka S.! Terima kasih sudah menghubungi.
             </p>
             <button
               onClick={() => {
@@ -90,7 +89,7 @@ export default function ContactSection() {
               }}
               className="pixel-btn pixel-btn-green py-2 px-6 font-press text-xs"
             >
-              SEND ANOTHER SIGNAL
+              KIRIM PESAN LAIN
             </button>
           </div>
         ) : (
@@ -101,7 +100,7 @@ export default function ContactSection() {
               {/* Name Field */}
               <div>
                 <label className="block text-cyan-300 mb-2 flex items-center gap-1.5">
-                  <User className="w-4 h-4 text-cyan-400" /> SENDER NAME:
+                  <User className="w-4 h-4 text-cyan-400" /> NAMA PENGIRIM:
                 </label>
                 <input
                   type="text"
@@ -116,12 +115,12 @@ export default function ContactSection() {
               {/* Email Field */}
               <div>
                 <label className="block text-cyan-300 mb-2 flex items-center gap-1.5">
-                  <Mail className="w-4 h-4 text-cyan-400" /> SENDER EMAIL:
+                  <Mail className="w-4 h-4 text-cyan-400" /> EMAIL PENGIRIM:
                 </label>
                 <input
                   type="email"
                   required
-                  placeholder="name@domain.com"
+                  placeholder="nama@domain.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="w-full bg-black border-2 border-cyan-700 text-cyan-100 px-4 py-3 font-vt text-xl focus:outline-none focus:border-yellow-400"
@@ -133,12 +132,12 @@ export default function ContactSection() {
             {/* Message Field */}
             <div>
               <label className="block text-cyan-300 mb-2 flex items-center gap-1.5">
-                <MessageCircle className="w-4 h-4 text-cyan-400" /> TRANSMISSION DATA (MESSAGE):
+                <MessageCircle className="w-4 h-4 text-cyan-400" /> ISI PESAN:
               </label>
               <textarea
                 required
                 rows={4}
-                placeholder="Tuliskan ide proyek, penawaran kerja sama, atau sapaan hangat di sini..."
+                placeholder="Tuliskan ide proyek, tawaran kerja sama, atau sapaan Anda di sini..."
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 className="w-full bg-black border-2 border-cyan-700 text-cyan-100 px-4 py-3 font-vt text-xl focus:outline-none focus:border-yellow-400"
@@ -152,7 +151,7 @@ export default function ContactSection() {
               className="w-full pixel-btn pixel-btn-yellow py-4 font-press text-sm flex items-center justify-center gap-2"
             >
               <Send className="w-4 h-4" />
-              {transmitting ? 'TRANSMITTING SIGNAL...' : 'TRANSMIT MESSAGE'}
+              {transmitting ? 'MENGIRIM PESAN...' : 'KIRIM PESAN'}
             </button>
 
           </form>

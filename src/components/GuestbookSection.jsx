@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Save, MessageSquare, User, Sparkles, AlertCircle } from 'lucide-react';
+import { Save, MessageSquare, AlertCircle } from 'lucide-react';
 import { supabase, isSupabaseConfigured, MOCK_GUESTBOOK } from '../lib/supabaseClient';
 import { soundFx } from '../lib/soundEffects';
 
@@ -74,18 +74,17 @@ export default function GuestbookSection() {
           soundFx.playPowerup();
           setEntries([data[0], ...entries]);
           setMessage('');
-          setStatusMsg('Game Saved! Pesan tersimpan di Supabase! 💾');
+          setStatusMsg('Pesan tersimpan di Supabase! 💾');
         }
       } catch (err) {
         console.error('Insert exception:', err);
         setStatusMsg('Terjadi kesalahan koneksi.');
       }
     } else {
-      // Local Mock Save
       soundFx.playPowerup();
       setEntries([{ ...newEntry, id: 'temp-' + Date.now() }, ...entries]);
       setMessage('');
-      setStatusMsg('Game Saved! (Mode Mock / Tanpa Supabase) 💾');
+      setStatusMsg('Pesan tersimpan! (Mode Mock / Tanpa Supabase) 💾');
     }
 
     setSubmitting(false);
@@ -102,10 +101,10 @@ export default function GuestbookSection() {
       {/* Section Header */}
       <div className="text-center mb-10">
         <h2 className="font-press text-2xl md:text-3xl text-pink-400 mb-2 flex items-center justify-center gap-3">
-          <span>💾</span> SAVE POINT (GUESTBOOK) <span>💾</span>
+          <span>💾</span> BUKU TAMU (GUESTBOOK) <span>💾</span>
         </h2>
         <p className="font-vt text-xl text-slate-400">
-          Leave a permanent message in the Supabase checkpoint log!
+          Tinggalkan pesan atau salam Anda di buku tamu ini!
         </p>
       </div>
 
@@ -115,9 +114,9 @@ export default function GuestbookSection() {
         <div className="lg:col-span-2 pixel-box-pink p-6">
           <div className="border-b-2 border-pink-500/40 pb-3 mb-4 flex items-center justify-between">
             <span className="font-press text-xs text-pink-300 flex items-center gap-2">
-              <Save className="w-4 h-4" /> WRITE LOG
+              <Save className="w-4 h-4" /> TULIS PESAN
             </span>
-            <span className="font-vt text-sm text-pink-400">CHECKPOINT</span>
+            <span className="font-vt text-sm text-pink-400">FORM BUKU TAMU</span>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -125,7 +124,7 @@ export default function GuestbookSection() {
             {/* Avatar Selector */}
             <div>
               <label className="block font-press text-[10px] text-slate-300 mb-2">
-                CHOOSE AVATAR:
+                PILIH AVATAR:
               </label>
               <div className="flex gap-2">
                 {AVATARS.map((av) => (
@@ -151,12 +150,12 @@ export default function GuestbookSection() {
             {/* Name Input */}
             <div>
               <label className="block font-press text-[10px] text-slate-300 mb-1">
-                ADVENTURER NAME:
+                NAMA ANDA:
               </label>
               <input
                 type="text"
                 required
-                placeholder="Ex: Hero_99"
+                placeholder="Ex: Andi"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="w-full bg-black border-2 border-pink-500 text-pink-200 px-3 py-2 font-vt text-lg focus:outline-none focus:border-yellow-400"
@@ -166,12 +165,12 @@ export default function GuestbookSection() {
             {/* Message Textarea */}
             <div>
               <label className="block font-press text-[10px] text-slate-300 mb-1">
-                PIXEL MESSAGE:
+                PESAN:
               </label>
               <textarea
                 required
                 rows={3}
-                placeholder="Tuliskan pesan retro di sini..."
+                placeholder="Tuliskan pesan atau saran Anda..."
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 className="w-full bg-black border-2 border-pink-500 text-pink-200 px-3 py-2 font-vt text-lg focus:outline-none focus:border-yellow-400"
@@ -191,7 +190,7 @@ export default function GuestbookSection() {
               className="w-full pixel-btn pixel-btn-yellow py-3 font-press text-xs flex items-center justify-center gap-2"
             >
               <Save className="w-4 h-4" />
-              {submitting ? 'SAVING DATA...' : 'SAVE CHECKPOINT'}
+              {submitting ? 'MENYIMPAN...' : 'KIRIM PESAN'}
             </button>
 
           </form>
@@ -201,9 +200,9 @@ export default function GuestbookSection() {
         <div className="lg:col-span-3 pixel-box p-6 flex flex-col justify-between max-h-[500px]">
           <div className="border-b-2 border-purple-500/40 pb-3 mb-4 flex items-center justify-between">
             <span className="font-press text-xs text-yellow-400 flex items-center gap-2">
-              <MessageSquare className="w-4 h-4" /> CHECKPOINT LOGS ({entries.length})
+              <MessageSquare className="w-4 h-4" /> DAFTAR PESAN ({entries.length})
             </span>
-            <span className="font-vt text-sm text-green-400">SUPABASE LIVE STREAM</span>
+            <span className="font-vt text-sm text-green-400">PESAN TERBARU</span>
           </div>
 
           <div className="space-y-4 overflow-y-auto pr-2 custom-scrollbar flex-1">

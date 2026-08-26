@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronUp, Github, Heart, Database, ShieldCheck, AlertTriangle } from 'lucide-react';
+import { ChevronUp, Github, Heart, ShieldCheck, AlertTriangle } from 'lucide-react';
 import { isSupabaseConfigured } from '../lib/supabaseClient';
 import { soundFx } from '../lib/soundEffects';
 
@@ -16,9 +16,9 @@ export default function Footer() {
         {/* Left: Branding & Status */}
         <div className="flex flex-col items-center md:items-start gap-2">
           <div className="font-press text-xs text-yellow-400 flex items-center gap-2">
-            <span>🎮 PLAYER 1 PORTFOLIO</span>
+            <span>🎮 RAMA EKA S. PORTFOLIO</span>
             <span className="text-slate-500">|</span>
-            <span className="text-slate-400 font-vt text-sm">ALL RIGHTS RESERVED</span>
+            <span className="text-slate-400 font-vt text-sm">HAK CIPTA DILINDUNGI</span>
           </div>
 
           {/* Supabase Connection Status Badge */}
@@ -38,13 +38,13 @@ export default function Footer() {
 
         {/* Center: Credits */}
         <div className="font-vt text-lg text-slate-400 flex items-center gap-1 text-center">
-          Built with <Heart className="w-4 h-4 text-red-500 fill-red-500 inline" /> using React, Supabase & GitHub Pages
+          Dibuat dengan <Heart className="w-4 h-4 text-red-500 fill-red-500 inline" /> oleh Rama Eka S.
         </div>
 
         {/* Right: Scroll to Top */}
         <div className="flex items-center gap-3">
           <a
-            href="https://github.com"
+            href="https://github.com/rama14685/Portfolio"
             target="_blank"
             rel="noreferrer"
             onClick={() => soundFx.playBlip()}
@@ -57,9 +57,9 @@ export default function Footer() {
           <button
             onClick={scrollToTop}
             className="pixel-btn pixel-btn-yellow py-2 px-3 text-xs flex items-center gap-1"
-            title="Scroll to Top"
+            title="Kembali ke Atas"
           >
-            <ChevronUp className="w-4 h-4" /> TOP
+            <ChevronUp className="w-4 h-4" /> ATAS
           </button>
         </div>
 

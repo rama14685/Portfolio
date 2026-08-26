@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ExternalLink, Github, Star, Filter, Search, Scroll, Sparkles } from 'lucide-react';
+import { ExternalLink, Github, Star, Search } from 'lucide-react';
 import { supabase, isSupabaseConfigured, MOCK_PROJECTS } from '../lib/supabaseClient';
 import { soundFx } from '../lib/soundEffects';
 
@@ -14,10 +14,7 @@ export default function ProjectsSection() {
   }, []);
 
   const fetchProjects = async () => {
-    if (!isSupabaseConfigured || !supabase) {
-      console.log('Supabase not configured, using mock projects data.');
-      return;
-    }
+    if (!isSupabaseConfigured || !supabase) return;
 
     try {
       setLoading(true);
@@ -32,7 +29,7 @@ export default function ProjectsSection() {
         setProjects(data);
       }
     } catch (err) {
-      console.warn('Supabase fetch failed, falling back to mock projects:', err);
+      console.warn('Supabase fetch failed:', err);
     } finally {
       setLoading(false);
     }
@@ -64,10 +61,10 @@ export default function ProjectsSection() {
       {/* Section Header */}
       <div className="text-center mb-10">
         <h2 className="font-press text-2xl md:text-3xl text-emerald-400 mb-2 flex items-center justify-center gap-3">
-          <span>📜</span> QUEST LOG <span>📜</span>
+          <span>📜</span> PORTFOLIO PROYEK <span>📜</span>
         </h2>
         <p className="font-vt text-xl text-slate-400">
-          Completed Missions & Projects // Explore Code & Live Demos
+          Daftar Proyek & Aplikasi Web // Klik Live Demo atau Lihat Source Code
         </p>
       </div>
 
@@ -86,7 +83,7 @@ export default function ProjectsSection() {
                   : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
               }`}
             >
-              [{cat.toUpperCase()}]
+              [{cat === 'ALL' ? 'SEMUA' : cat.toUpperCase()}]
             </button>
           ))}
         </div>
@@ -95,7 +92,7 @@ export default function ProjectsSection() {
         <div className="relative w-full md:w-64">
           <input
             type="text"
-            placeholder="Search quest..."
+            placeholder="Cari proyek..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-black border-2 border-emerald-600 text-emerald-300 px-3 py-2 pl-9 font-vt text-lg focus:outline-none focus:border-yellow-400"
@@ -108,11 +105,11 @@ export default function ProjectsSection() {
       {/* Projects Grid */}
       {loading ? (
         <div className="text-center py-12 font-press text-yellow-400 animate-pulse">
-          LOADING QUEST LOG FROM SUPABASE...
+          MEMUAT PROYEK DARI SUPABASE...
         </div>
       ) : filteredProjects.length === 0 ? (
         <div className="pixel-box p-8 text-center font-vt text-2xl text-slate-400">
-          No quests found matching your criteria.
+          Tidak ada proyek yang sesuai dengan kata kunci pencarian.
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -171,7 +168,7 @@ export default function ProjectsSection() {
                     onClick={() => soundFx.playCoin()}
                     className="flex-1 pixel-btn pixel-btn-green py-2 flex items-center justify-center gap-1 text-[9px]"
                   >
-                    <ExternalLink className="w-3 h-3" /> DEMO
+                    <ExternalLink className="w-3 h-3" /> DEMO LIVE
                   </a>
                 )}
                 {project.github_url && (
@@ -182,7 +179,7 @@ export default function ProjectsSection() {
                     onClick={() => soundFx.playBlip()}
                     className="flex-1 pixel-btn py-2 flex items-center justify-center gap-1 text-[9px]"
                   >
-                    <Github className="w-3 h-3" /> CODE
+                    <Github className="w-3 h-3" /> KODE
                   </a>
                 )}
               </div>

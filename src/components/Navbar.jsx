@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Volume2, VolumeX, Monitor, Menu, X, Coins, Sparkles } from 'lucide-react';
+import { Volume2, VolumeX, Monitor, Menu, X, Coins } from 'lucide-react';
 import { soundFx } from '../lib/soundEffects';
 
 export default function Navbar({ crtEnabled, setCrtEnabled, soundMuted, setSoundMuted }) {
@@ -34,12 +34,12 @@ export default function Navbar({ crtEnabled, setCrtEnabled, soundMuted, setSound
           onClick={() => handleNavClick('hero')}
           className="flex items-center gap-3 cursor-pointer group"
         >
-          <div className="w-10 h-10 bg-yellow-400 border-2 border-black flex items-center justify-center font-press text-black font-bold shadow-[2px_2px_0_0_#000] group-hover:scale-105 transition-transform">
-            P1
+          <div className="w-10 h-10 bg-yellow-400 border-2 border-black flex items-center justify-center font-press text-black font-bold text-xs shadow-[2px_2px_0_0_#000] group-hover:scale-105 transition-transform overflow-hidden">
+            <img src="./avatar.jpg" alt="Rama" className="w-full h-full object-cover" />
           </div>
           <div>
-            <div className="font-press text-xs text-yellow-400 flex items-center gap-1">
-              <span>PLAYER 1</span>
+            <div className="font-press text-xs text-yellow-400 flex items-center gap-1.5">
+              <span>RAMA EKA S.</span>
               <span className="inline-block w-2 h-2 bg-green-400 rounded-full animate-ping"></span>
             </div>
             <div className="text-xs text-slate-400 font-vt tracking-wider">
@@ -48,31 +48,31 @@ export default function Navbar({ crtEnabled, setCrtEnabled, soundMuted, setSound
           </div>
         </div>
 
-        {/* Desktop Navigation Links */}
+        {/* Desktop Navigation Links (Friendly Names) */}
         <nav className="hidden md:flex items-center gap-6 font-press text-xs">
           <button 
             onClick={() => handleNavClick('stats')} 
             className="text-slate-300 hover:text-yellow-400 transition-colors flex items-center gap-1"
           >
-            [STATS]
+            [KEAHLIAN]
           </button>
           <button 
             onClick={() => handleNavClick('projects')} 
             className="text-slate-300 hover:text-yellow-400 transition-colors flex items-center gap-1"
           >
-            [QUESTS]
+            [PROYEK]
           </button>
           <button 
             onClick={() => handleNavClick('guestbook')} 
             className="text-slate-300 hover:text-yellow-400 transition-colors flex items-center gap-1"
           >
-            [SAVE POINT]
+            [BUKU TAMU]
           </button>
           <button 
             onClick={() => handleNavClick('contact')} 
             className="text-slate-300 hover:text-yellow-400 transition-colors flex items-center gap-1"
           >
-            [TRANSMIT]
+            [KONTAK]
           </button>
         </nav>
 
@@ -88,7 +88,7 @@ export default function Navbar({ crtEnabled, setCrtEnabled, soundMuted, setSound
           {/* CRT Toggle */}
           <button
             onClick={toggleCrt}
-            title={crtEnabled ? "Disable CRT Effect" : "Enable CRT Effect"}
+            title={crtEnabled ? "Matikan Efek Layar CRT" : "Aktifkan Efek Layar CRT"}
             className={`p-2 border-2 border-black font-press text-xs ${
               crtEnabled ? 'bg-purple-600 text-white' : 'bg-slate-800 text-slate-400'
             } shadow-[2px_2px_0_0_#000] active:translate-y-1`}
@@ -99,7 +99,7 @@ export default function Navbar({ crtEnabled, setCrtEnabled, soundMuted, setSound
           {/* Mute Toggle */}
           <button
             onClick={toggleSound}
-            title={soundMuted ? "Unmute Audio" : "Mute Audio"}
+            title={soundMuted ? "Nyalakan Suara Retro" : "Matikan Suara Retro"}
             className={`p-2 border-2 border-black font-press text-xs ${
               !soundMuted ? 'bg-emerald-600 text-white' : 'bg-slate-800 text-slate-400'
             } shadow-[2px_2px_0_0_#000] active:translate-y-1`}
@@ -127,25 +127,25 @@ export default function Navbar({ crtEnabled, setCrtEnabled, soundMuted, setSound
             onClick={() => handleNavClick('stats')}
             className="text-left py-2 px-3 hover:bg-purple-900/50 text-yellow-400 border-l-4 border-yellow-400"
           >
-            ⚔️ [STATS] Character Status
+            ⚔️ [KEAHLIAN] Skill & Status
           </button>
           <button 
             onClick={() => handleNavClick('projects')}
             className="text-left py-2 px-3 hover:bg-purple-900/50 text-emerald-400 border-l-4 border-emerald-400"
           >
-            📜 [QUESTS] Project Showcase
+            📜 [PROYEK] Portfolio Karya
           </button>
           <button 
             onClick={() => handleNavClick('guestbook')}
             className="text-left py-2 px-3 hover:bg-purple-900/50 text-pink-400 border-l-4 border-pink-400"
           >
-            💾 [SAVE POINT] Guestbook
+            💾 [BUKU TAMU] Guestbook
           </button>
           <button 
             onClick={() => handleNavClick('contact')}
             className="text-left py-2 px-3 hover:bg-purple-900/50 text-cyan-400 border-l-4 border-cyan-400"
           >
-            📡 [TRANSMIT] Contact Terminal
+            📡 [KONTAK] Kontak Saya
           </button>
         </div>
       )}

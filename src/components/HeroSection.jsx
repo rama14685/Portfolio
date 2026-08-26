@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Play, Shield, Terminal, Zap, Code, Database, Sparkles } from 'lucide-react';
+import { Play, Terminal, Code, Database, Zap } from 'lucide-react';
 import { soundFx } from '../lib/soundEffects';
 
 export default function HeroSection() {
-  const fullText = "Halo Adventurer! Selamat datang di dunia portofolio bertema Pixel RPG. Saya adalah seorang Fullstack Web Developer yang siap membangun aplikasi web modern, cepat, dan interaktif.";
+  const fullText = "Halo! Saya Rama Eka S., seorang Web Developer yang berfokus pada pengembangan aplikasi web modern, responsif, dan interaktif. Selamat datang di portofolio retro saya!";
   const [displayedText, setDisplayedText] = useState("");
   const [isTypingDone, setIsTypingDone] = useState(false);
 
@@ -43,28 +43,37 @@ export default function HeroSection() {
               <span className="w-3 h-3 bg-red-500 rounded-full inline-block"></span>
               <span className="w-3 h-3 bg-yellow-500 rounded-full inline-block"></span>
               <span className="w-3 h-3 bg-green-500 rounded-full inline-block"></span>
-              <span className="font-press text-xs text-purple-300 ml-2">WORLD 1-1 // INTRO</span>
+              <span className="font-press text-xs text-purple-300 ml-2">PROFIL // RAMA EKA S.</span>
             </div>
             <div className="font-press text-xs text-yellow-400 animate-pulse">
-              ★ READY ★
+              ★ ONLINE ★
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
             
-            {/* Character Avatar Box */}
+            {/* Character Avatar Box with User Photo */}
             <div className="flex flex-col items-center justify-center">
-              <div className="pixel-box-yellow p-4 w-48 h-48 flex flex-col items-center justify-center relative group cursor-pointer" onClick={() => soundFx.playCoin()}>
-                {/* Pixel Character Art Placeholder / Avatar */}
-                <div className="text-7xl mb-2 pixel-float group-hover:scale-110 transition-transform">
-                  🧙‍♂️
+              <div 
+                onClick={() => soundFx.playCoin()}
+                className="pixel-box-yellow p-2 w-52 h-64 flex flex-col items-center justify-between relative group cursor-pointer overflow-hidden"
+              >
+                <div className="w-full h-48 border-2 border-black overflow-hidden bg-black relative">
+                  <img
+                    src="./avatar.jpg"
+                    alt="Rama Eka S."
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute top-1 left-1 bg-yellow-400 text-black font-press text-[8px] px-1.5 py-0.5 border border-black font-bold">
+                    P1
+                  </div>
                 </div>
-                <div className="font-press text-[10px] bg-black text-yellow-400 px-2 py-1 border border-yellow-500 mt-2">
-                  CLASS: CODER
+                <div className="font-press text-[10px] bg-black text-yellow-400 px-2 py-1 border border-yellow-500 w-full text-center mt-1">
+                  RAMA EKA S.
                 </div>
               </div>
               <div className="mt-3 font-press text-xs text-slate-300 flex items-center gap-2">
-                <span className="text-green-400">STATUS:</span> ONLINE
+                <span className="text-green-400">STATUS:</span> READY FOR WORK
               </div>
             </div>
 
@@ -74,8 +83,8 @@ export default function HeroSection() {
               {/* Retro Speech Box */}
               <div className="bg-black border-4 border-white p-5 mb-6 relative min-h-[140px] shadow-[4px_4px_0_0_#000]">
                 <div className="font-press text-xs text-yellow-400 mb-2 flex items-center justify-between">
-                  <span>[SYSTEM DIALOGUE]</span>
-                  <span className="text-slate-500 text-[10px]">VER 2.0</span>
+                  <span>[DIALOG PERSENAL]</span>
+                  <span className="text-slate-500 text-[10px]">RAMA EKA S.</span>
                 </div>
                 <p className="font-vt text-xl md:text-2xl text-green-400 leading-relaxed">
                   "{displayedText}"
@@ -96,21 +105,21 @@ export default function HeroSection() {
                 </span>
               </div>
 
-              {/* Press Start CTA Button */}
-              <div className="flex items-center gap-4">
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap items-center gap-4">
                 <button
                   onClick={handleStart}
-                  className="pixel-btn pixel-btn-yellow text-sm font-press py-3 px-6"
+                  className="pixel-btn pixel-btn-yellow text-xs font-press py-3 px-5 flex items-center gap-2"
                 >
-                  <Play className="w-4 h-4 fill-black" /> PRESS START
+                  <Play className="w-4 h-4 fill-black" /> LIHAT PROYEK
                 </button>
 
                 <a
                   href="#contact"
                   onClick={() => soundFx.playBlip()}
-                  className="pixel-btn text-xs font-press py-3 px-4"
+                  className="pixel-btn text-xs font-press py-3 px-5 flex items-center gap-2"
                 >
-                  <Terminal className="w-4 h-4" /> TRANSMIT
+                  <Terminal className="w-4 h-4" /> HUBUNGI SAYA
                 </a>
               </div>
 
