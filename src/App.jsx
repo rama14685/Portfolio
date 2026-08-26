@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
+import SocialTicker from './components/SocialTicker';
 import DynamicBackground from './components/DynamicBackground';
 import HeroSection from './components/HeroSection';
 import StatsSection from './components/StatsSection';
@@ -24,6 +25,10 @@ export default function App() {
           soundMuted={soundMuted}
           setSoundMuted={setSoundMuted}
         />
+
+        {/* Retro Running Text Marquee Banner (Social Media) */}
+        <SocialTicker />
+
         <main className="space-y-12 relative z-10">
           <HeroSection />
           <StatsSection />
