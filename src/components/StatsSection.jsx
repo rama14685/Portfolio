@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, X, Swords } from 'lucide-react';
+import { Box, X } from 'lucide-react';
 import { soundFx } from '../lib/soundEffects';
 
 const SKILLS = [
@@ -87,8 +87,6 @@ const SKILLS = [
 
 export default function StatsSection() {
   const [selectedSkill, setSelectedSkill] = useState(null);
-  const [golemHp, setGolemHp] = useState(100);
-  const [caveLog, setCaveLog] = useState("Kesatria memasuki gua bawah tanah! Monster Golem Gua menghadang!");
 
   const openSkillModal = (skill) => {
     soundFx.playCoin();
@@ -100,26 +98,11 @@ export default function StatsSection() {
     setSelectedSkill(null);
   };
 
-  const handleCaveAttack = () => {
-    soundFx.playCoin();
-    const damage = Math.floor(Math.random() * 20) + 15;
-    const newHp = Math.max(0, golemHp - damage);
-    setGolemHp(newHp);
-
-    if (newHp === 0) {
-      soundFx.playPowerup();
-      setCaveLog(`💥 CRITICAL STRIKE! ${damage} DMG! Golem Gua hancur lebur menjadi batu kristal! (+200 XP)`);
-      setTimeout(() => setGolemHp(100), 3000);
-    } else {
-      setCaveLog(`⚔️ Serangan Teatrikal Kesatria menghantam Golem Gua sebesar ${damage} DMG!`);
-    }
-  };
-
   return (
-    <section id="stats" className="py-12 px-4 max-w-5xl mx-auto space-y-8">
-      
+    <section id="stats" className="py-12 px-4 max-w-5xl mx-auto">
+
       {/* Section Header */}
-      <div className="text-center mb-6">
+      <div className="text-center mb-10">
         <h2 className="font-press text-2xl md:text-3xl text-yellow-400 mb-2 flex items-center justify-center gap-3">
           <span>⚔️</span> KEAHLIAN & STATISTIK <span>⚔️</span>
         </h2>
@@ -128,61 +111,8 @@ export default function StatsSection() {
         </p>
       </div>
 
-      {/* Interactive Underground Cave Battle Arena Banner */}
-      <div className="pixel-box-pink p-6 relative overflow-hidden bg-[#1f0a20]/90">
-        <div className="flex items-center justify-between border-b-2 border-pink-500/40 pb-3 mb-4">
-          <div className="font-press text-xs text-pink-300 flex items-center gap-2">
-            <Swords className="w-4 h-4 text-pink-400" /> BATTLE SCENE 2: GUA BAWAH TANAH
-          </div>
-          <div className="font-press text-[10px] text-yellow-400">
-            AREA 2/5 (DUNGEON CAVE)
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-          
-          {/* Player Side */}
-          <div className="bg-black/60 border-2 border-purple-600 p-4 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="text-4xl pixel-float">🛡️</div>
-              <div>
-                <div className="font-press text-xs text-yellow-300">RAMA EKA S.</div>
-                <div className="font-press text-[9px] text-purple-300 mt-1">STATUS: TECH SPECIALIST</div>
-              </div>
-            </div>
-            <button
-              onClick={handleCaveAttack}
-              className="pixel-btn pixel-btn-yellow py-2 px-3 text-[10px] font-press flex items-center gap-1 active:scale-95"
-            >
-              <Swords className="w-3.5 h-3.5" /> ATTACK!
-            </button>
-          </div>
-
-          {/* Cave Monster Side */}
-          <div className="bg-black/60 border-2 border-purple-600 p-4 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="text-4xl pixel-float">🧌</div>
-              <div>
-                <div className="font-press text-xs text-purple-400">GOLEM GUA KRISTAL</div>
-                <div className="font-press text-[9px] text-slate-300 mt-1">HP: {golemHp}/100</div>
-                <div className="pixel-bar-bg w-32 mt-1">
-                  <div className="pixel-bar-fill-hp bg-purple-500" style={{ width: `${golemHp}%` }} />
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Cave Combat Log */}
-        <div className="mt-4 bg-black p-3 border border-purple-600/60 font-vt text-lg text-purple-300 text-center">
-          {caveLog}
-        </div>
-
-      </div>
-
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
+
         {/* Left Column: Player Attribute Sheet */}
         <div className="pixel-box p-6 flex flex-col justify-between">
           <div>
@@ -192,7 +122,7 @@ export default function StatsSection() {
             </div>
 
             <div className="space-y-4 font-press text-xs">
-              
+
               {/* HP Bar */}
               <div>
                 <div className="flex justify-between mb-1 text-[10px]">
@@ -283,7 +213,7 @@ export default function StatsSection() {
             ))}
           </div>
 
-          <div className="mt-6 bg-black/50 border border-slate-700 p-4 font-vt text-lg text-slate-300 flex items-center justify-between">
+          <div className="mt-6 bg-black/50 border border-slate-700 p-4 font-vt text-lg text-slate-300">
             <span>💡 Klik salah satu kartu keahlian di atas untuk melihat detail deskripsi & tugasnya.</span>
           </div>
         </div>
@@ -292,7 +222,7 @@ export default function StatsSection() {
 
       {/* Skill Modal */}
       {selectedSkill && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
           <div className="pixel-box-yellow max-w-md w-full p-6 relative">
             <button
               onClick={closeModal}
