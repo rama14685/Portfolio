@@ -4,84 +4,84 @@ import { soundFx } from '../lib/soundEffects';
 
 const SKILLS = [
   {
-    id: 'react',
-    name: 'React JS',
-    icon: '⚛️',
+    id: 'itsupport',
+    name: 'IT Support & Helpdesk',
+    icon: '🛠️',
     rarity: 'LEGENDARY',
-    type: 'Frontend Web',
-    level: 95,
-    description: 'Framework utama dalam membangun interface Single Page Application (SPA) yang cepat, modular, dan responsif.',
-    boost: '+95 UI/UX Mastery'
+    type: 'Hardware & OS Maintenance',
+    level: 96,
+    description: 'Troubleshooting hardware/software PC & laptop, perakitan & instalasi OS, maintenance perangkat periferal, dan manajemen IT helpdesk.',
+    boost: '+96 System Reliability'
   },
   {
-    id: 'supabase',
-    name: 'Supabase',
+    id: 'webdev',
+    name: 'Web Development',
+    icon: '🌐',
+    rarity: 'LEGENDARY',
+    type: 'Frontend & Backend Web',
+    level: 95,
+    description: 'Pengembangan website modern, responsif, dan cepat menggunakan React, Laravel, Tailwind CSS, JavaScript, & Supabase.',
+    boost: '+95 Fullstack Mastery'
+  },
+  {
+    id: 'cybersecurity',
+    name: 'Cyber Security',
+    icon: '🛡️',
+    rarity: 'MYTHIC',
+    type: 'Security & Auditing',
+    level: 92,
+    description: 'Analisis keamanan sistem & jaringan, vulnerability assessment, system hardening, proteksi data, dan penanganan ancaman siber.',
+    boost: '+92 Shield Defense'
+  },
+  {
+    id: 'eventfreelancer',
+    name: 'Event Freelancer',
+    icon: '🎪',
+    rarity: 'EPIC',
+    type: 'Event Tech Operations',
+    level: 94,
+    description: 'Dukungan operasional teknis acara/event, manajemen tim lapangan, setup audio-visual (AV), & kelancaran jaringan di lokasi event.',
+    boost: '+94 Event Coordination'
+  },
+  {
+    id: 'networking',
+    name: 'Jaringan & Networking',
+    icon: '📡',
+    rarity: 'EPIC',
+    type: 'Infrastructure & Router',
+    level: 90,
+    description: 'Konfigurasi LAN/WLAN, router, switch, IP addressing, trouble shooting koneksi internet, dan keamanan jaringan lokal.',
+    boost: '+90 Network Uptime'
+  },
+  {
+    id: 'database',
+    name: 'Database & Supabase',
     icon: '⚡',
     rarity: 'MYTHIC',
-    type: 'Backend Database',
+    type: 'Data Management',
     level: 90,
-    description: 'Platform Backend-as-a-Service PostgreSQL untuk database real-time, otentikasi user, dan penyimpanan berkas.',
-    boost: '+90 Realtime Speed'
+    description: 'Pengelolaan database relasional PostgreSQL, Supabase Backend-as-a-Service, kueri SQL, dan keamanan tabel RLS.',
+    boost: '+90 Data Integrity'
   },
   {
-    id: 'tailwind',
-    name: 'Tailwind CSS',
-    icon: '🎨',
-    rarity: 'EPIC',
-    type: 'UI Styling',
-    level: 95,
-    description: 'Framework CSS utility-first untuk pembuatan desain web modern, responsif, dan custom pixel styling.',
-    boost: '+95 Styling Speed'
-  },
-  {
-    id: 'vite',
-    name: 'Vite Bundler',
-    icon: '🚀',
-    rarity: 'EPIC',
-    type: 'Build Tool',
-    level: 92,
-    description: 'Frontend build tool berkecepatan tinggi dengan HMR presisi dan bundler optimal untuk hosting statis.',
-    boost: '+92 Build Velocity'
-  },
-  {
-    id: 'laravel',
-    name: 'Laravel PHP',
-    icon: '🔴',
+    id: 'sysadmin',
+    name: 'System Administration',
+    icon: '💻',
     rarity: 'RARE',
-    type: 'Backend Framework',
-    level: 88,
-    description: 'Framework PHP ekosistem lengkap untuk perancangan RESTful API, ORM Eloquent, dan arsitektur backend.',
-    boost: '+88 Enterprise Power'
+    type: 'Operating Systems',
+    level: 91,
+    description: 'Pengelolaan OS Windows & Linux, backup/restore data penting, instalasi software berlisensi, dan optimasi performa perangkat.',
+    boost: '+91 Performance Boost'
   },
   {
     id: 'git',
-    name: 'Git & GitHub',
+    name: 'Git & Deployment Tools',
     icon: '🐙',
-    rarity: 'LEGENDARY',
-    type: 'Version Control',
-    level: 92,
-    description: 'Sistem pengontrol versi untuk manajemen kode, kolaborasi tim, dan CI/CD deployment via GitHub Actions.',
-    boost: '+92 Code Protection'
-  },
-  {
-    id: 'javascript',
-    name: 'JavaScript (ES6+)',
-    icon: '📜',
-    rarity: 'LEGENDARY',
-    type: 'Core Language',
-    level: 96,
-    description: 'Bahasa pemrograman fundamental untuk manipulasi DOM, Async/Await, Web API, dan logika aplikasi web.',
-    boost: '+96 Core Logic'
-  },
-  {
-    id: 'sql',
-    name: 'PostgreSQL & SQL',
-    icon: '💎',
     rarity: 'EPIC',
-    type: 'Database Relaksional',
-    level: 89,
-    description: 'Perancangan skema relasional, optimasi kueri tabel, dan pengelolaan data yang aman dan terstruktur.',
-    boost: '+89 Data Integrity'
+    type: 'DevOps & Tools',
+    level: 92,
+    description: 'Version control menggunakan Git/GitHub, otomatisasi build/deployment via GitHub Actions, serta manajemen repositori.',
+    boost: '+92 Deployment Speed'
   }
 ];
 
@@ -124,7 +124,7 @@ export default function StatsSection() {
           <span>⚔️</span> KEAHLIAN & STATISTIK <span>⚔️</span>
         </h2>
         <p className="font-vt text-xl text-slate-400">
-          Daftar Keahlian & Teknologi // Klik item untuk melihat detail
+          Bidang Fokus: IT Support | Web Developer | Cyber Security | Event Freelancer
         </p>
       </div>
 
@@ -147,7 +147,7 @@ export default function StatsSection() {
               <div className="text-4xl pixel-float">🛡️</div>
               <div>
                 <div className="font-press text-xs text-yellow-300">RAMA EKA S.</div>
-                <div className="font-press text-[9px] text-purple-300 mt-1">STATUS: CAVE EXPLORER</div>
+                <div className="font-press text-[9px] text-purple-300 mt-1">STATUS: TECH SPECIALIST</div>
               </div>
             </div>
             <button
@@ -228,29 +228,29 @@ export default function StatsSection() {
 
             </div>
 
-            {/* Base Stats Table */}
+            {/* Base Stats Table for 4 Focus Areas */}
             <div className="mt-6 pt-4 border-t-2 border-purple-500/40 font-vt text-lg space-y-1.5">
               <div className="flex justify-between">
-                <span className="text-slate-400">Frontend Power:</span>
-                <span className="text-yellow-400 font-bold">96</span>
+                <span className="text-slate-400">IT Support:</span>
+                <span className="text-blue-400 font-bold">96 STAT</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">Backend Logic:</span>
-                <span className="text-sky-400 font-bold">92</span>
+                <span className="text-slate-400">Web Development:</span>
+                <span className="text-purple-400 font-bold">95 STAT</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">UI Responsiveness:</span>
-                <span className="text-green-400 font-bold">95</span>
+                <span className="text-slate-400">Cyber Security:</span>
+                <span className="text-green-400 font-bold">92 STAT</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-400">Troubleshooting:</span>
-                <span className="text-pink-400 font-bold">99</span>
+                <span className="text-slate-400">Event Operations:</span>
+                <span className="text-amber-400 font-bold">94 STAT</span>
               </div>
             </div>
           </div>
 
           <div className="mt-6 p-3 bg-purple-950/60 border border-purple-500 text-center font-press text-[10px] text-purple-200">
-            NAMA: RAMA EKA S.
+            RAMA EKA S. // TECH SPECIALIST
           </div>
         </div>
 
@@ -260,7 +260,7 @@ export default function StatsSection() {
             <span className="font-press text-xs text-yellow-400 flex items-center gap-2">
               <Box className="w-4 h-4 text-yellow-400" /> INVENTARIS SKILL (8/8)
             </span>
-            <span className="font-vt text-sm text-slate-400">TEKNOLOGI DIKUASAI</span>
+            <span className="font-vt text-sm text-slate-400">FOKUS & BIDANG UTAMA</span>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -284,7 +284,7 @@ export default function StatsSection() {
           </div>
 
           <div className="mt-6 bg-black/50 border border-slate-700 p-4 font-vt text-lg text-slate-300 flex items-center justify-between">
-            <span>💡 Klik salah satu item di atas untuk melihat penjelasan detail keahlian.</span>
+            <span>💡 Klik salah satu kartu keahlian di atas untuk melihat detail deskripsi & tugasnya.</span>
           </div>
         </div>
 

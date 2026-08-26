@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Play, Terminal, Code, Database, Zap, Swords, Heart, Shield } from 'lucide-react';
+import { Play, Terminal, Code, Shield, Wrench, Calendar, Swords } from 'lucide-react';
 import { soundFx } from '../lib/soundEffects';
 
 export default function HeroSection() {
-  const fullText = "Halo! Saya Rama Eka S., seorang Web Developer yang berfokus pada pengembangan aplikasi web modern, responsif, dan interaktif. Selamat datang di portofolio retro saya!";
+  const fullText = "Halo! Saya Rama Eka S. Saya berfokus di bidang IT Support, Web Developer, Cyber Security, dan Event Freelancer. Selamat datang di portofolio retro saya!";
   const [displayedText, setDisplayedText] = useState("");
   const [isTypingDone, setIsTypingDone] = useState(false);
   const [monsterHp, setMonsterHp] = useState(85);
@@ -64,7 +64,7 @@ export default function HeroSection() {
               <span className="w-3 h-3 bg-red-500 rounded-full inline-block" />
               <span className="w-3 h-3 bg-yellow-500 rounded-full inline-block" />
               <span className="w-3 h-3 bg-green-500 rounded-full inline-block" />
-              <span className="font-press text-xs text-purple-300 ml-2">STAGE 1 // FOREST ENCOUNTER</span>
+              <span className="font-press text-xs text-purple-300 ml-2">PROFIL // RAMA EKA S.</span>
             </div>
             <div className="font-press text-xs text-yellow-400 animate-pulse">
               ★ BATTLE ACTIVE ★
@@ -115,16 +115,19 @@ export default function HeroSection() {
                 </p>
               </div>
 
-              {/* Badges / Tech Highlights */}
+              {/* 4 Core Focus Badges */}
               <div className="flex flex-wrap gap-2 mb-6 font-press text-[10px]">
+                <span className="bg-blue-900/80 border border-blue-400 text-blue-200 px-2.5 py-1.5 flex items-center gap-1">
+                  <Wrench className="w-3.5 h-3.5 text-blue-400" /> IT SUPPORT
+                </span>
                 <span className="bg-purple-900/80 border border-purple-400 text-purple-200 px-2.5 py-1.5 flex items-center gap-1">
-                  <Code className="w-3.5 h-3.5 text-purple-400" /> REACT & VITE
+                  <Code className="w-3.5 h-3.5 text-purple-400" /> WEB DEV
                 </span>
                 <span className="bg-emerald-900/80 border border-emerald-400 text-emerald-200 px-2.5 py-1.5 flex items-center gap-1">
-                  <Database className="w-3.5 h-3.5 text-emerald-400" /> SUPABASE
+                  <Shield className="w-3.5 h-3.5 text-emerald-400" /> CYBER SECURITY
                 </span>
-                <span className="bg-yellow-900/80 border border-yellow-400 text-yellow-200 px-2.5 py-1.5 flex items-center gap-1">
-                  <Zap className="w-3.5 h-3.5 text-yellow-400" /> TAILWIND CSS
+                <span className="bg-amber-900/80 border border-amber-400 text-amber-200 px-2.5 py-1.5 flex items-center gap-1">
+                  <Calendar className="w-3.5 h-3.5 text-amber-400" /> EVENT FREELANCER
                 </span>
               </div>
 
@@ -152,7 +155,7 @@ export default function HeroSection() {
 
         </div>
 
-        {/* Interactive Pixel Battle Arena Banner (Forest Battle Scene) */}
+        {/* Interactive Pixel Battle Arena Banner */}
         <div className="pixel-box-emerald p-6 relative overflow-hidden bg-[#091a13]/90">
           <div className="flex items-center justify-between border-b-2 border-emerald-500/40 pb-3 mb-4">
             <div className="font-press text-xs text-emerald-300 flex items-center gap-2">

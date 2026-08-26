@@ -43,12 +43,12 @@ export default function Navbar({ crtEnabled, setCrtEnabled, soundMuted, setSound
               <span className="inline-block w-2 h-2 bg-green-400 rounded-full animate-ping"></span>
             </div>
             <div className="text-xs text-slate-400 font-vt tracking-wider">
-              LVL 99 FULLSTACK DEVELOPER
+              IT SUPPORT | WEB DEV | CYBER SECURITY | EVENT FREELANCER
             </div>
           </div>
         </div>
 
-        {/* Desktop Navigation Links (Friendly Names) */}
+        {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-6 font-press text-xs">
           <button 
             onClick={() => handleNavClick('stats')} 
@@ -127,7 +127,7 @@ export default function Navbar({ crtEnabled, setCrtEnabled, soundMuted, setSound
             onClick={() => handleNavClick('stats')}
             className="text-left py-2 px-3 hover:bg-purple-900/50 text-yellow-400 border-l-4 border-yellow-400"
           >
-            ⚔️ [KEAHLIAN] Skill & Status
+            ⚔️ [KEAHLIAN] Skill & Focus
           </button>
           <button 
             onClick={() => handleNavClick('projects')}
