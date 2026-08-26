@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Play, Terminal, Code, Database, Zap } from 'lucide-react';
+import { Play, Terminal, Code, Database, Zap, Swords, Heart, Shield } from 'lucide-react';
 import { soundFx } from '../lib/soundEffects';
 
 export default function HeroSection() {
   const fullText = "Halo! Saya Rama Eka S., seorang Web Developer yang berfokus pada pengembangan aplikasi web modern, responsif, dan interaktif. Selamat datang di portofolio retro saya!";
   const [displayedText, setDisplayedText] = useState("");
   const [isTypingDone, setIsTypingDone] = useState(false);
+  const [monsterHp, setMonsterHp] = useState(85);
+  const [isAttacking, setIsAttacking] = useState(false);
+  const [combatLog, setCombatLog] = useState("Seekor monster hutan muncul! Tekan ATTACK!");
 
   useEffect(() => {
     let index = 0;
@@ -22,6 +25,24 @@ export default function HeroSection() {
     return () => clearInterval(interval);
   }, []);
 
+  const handleAttack = () => {
+    soundFx.playCoin();
+    setIsAttacking(true);
+    const damage = Math.floor(Math.random() * 15) + 10;
+    const newHp = Math.max(0, monsterHp - damage);
+    setMonsterHp(newHp);
+
+    if (newHp === 0) {
+      soundFx.playPowerup();
+      setCombatLog(`⚔️ CRITICAL HIT! ${damage} DMG! Monster Hutan berhasil dikalahkan! (+100 XP)`);
+      setTimeout(() => setMonsterHp(100), 3000);
+    } else {
+      setCombatLog(`⚔️ Serangan Rama Eka S. menghasilkan ${damage} DMG pada Monster Hutan!`);
+    }
+
+    setTimeout(() => setIsAttacking(false), 400);
+  };
+
   const handleStart = () => {
     soundFx.playPowerup();
     const projectsEl = document.getElementById('projects');
@@ -31,22 +52,22 @@ export default function HeroSection() {
   };
 
   return (
-    <section id="hero" className="py-12 md:py-20 px-4">
-      <div className="max-w-4xl mx-auto">
+    <section id="hero" className="py-12 md:py-16 px-4">
+      <div className="max-w-5xl mx-auto space-y-8">
         
-        {/* Main Hero Container */}
+        {/* Main Hero Card Container */}
         <div className="pixel-box p-6 md:p-10 relative overflow-hidden">
           
           {/* Top Title Bar */}
           <div className="flex items-center justify-between border-b-4 border-[#3c3166] pb-4 mb-8">
             <div className="flex items-center gap-2">
-              <span className="w-3 h-3 bg-red-500 rounded-full inline-block"></span>
-              <span className="w-3 h-3 bg-yellow-500 rounded-full inline-block"></span>
-              <span className="w-3 h-3 bg-green-500 rounded-full inline-block"></span>
-              <span className="font-press text-xs text-purple-300 ml-2">PROFIL // RAMA EKA S.</span>
+              <span className="w-3 h-3 bg-red-500 rounded-full inline-block" />
+              <span className="w-3 h-3 bg-yellow-500 rounded-full inline-block" />
+              <span className="w-3 h-3 bg-green-500 rounded-full inline-block" />
+              <span className="font-press text-xs text-purple-300 ml-2">STAGE 1 // FOREST ENCOUNTER</span>
             </div>
             <div className="font-press text-xs text-yellow-400 animate-pulse">
-              ★ ONLINE ★
+              ★ BATTLE ACTIVE ★
             </div>
           </div>
 
@@ -62,7 +83,9 @@ export default function HeroSection() {
                   <img
                     src="./avatar.jpg"
                     alt="Rama Eka S."
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className={`w-full h-full object-cover transition-transform duration-300 ${
+                      isAttacking ? 'scale-110 translate-x-2' : 'group-hover:scale-105'
+                    }`}
                   />
                   <div className="absolute top-1 left-1 bg-yellow-400 text-black font-press text-[8px] px-1.5 py-0.5 border border-black font-bold">
                     P1
@@ -83,12 +106,12 @@ export default function HeroSection() {
               {/* Retro Speech Box */}
               <div className="bg-black border-4 border-white p-5 mb-6 relative min-h-[140px] shadow-[4px_4px_0_0_#000]">
                 <div className="font-press text-xs text-yellow-400 mb-2 flex items-center justify-between">
-                  <span>[DIALOG PERSENAL]</span>
+                  <span>[DIALOG PERSONAL]</span>
                   <span className="text-slate-500 text-[10px]">RAMA EKA S.</span>
                 </div>
                 <p className="font-vt text-xl md:text-2xl text-green-400 leading-relaxed">
                   "{displayedText}"
-                  {!isTypingDone && <span className="inline-block w-2 h-5 bg-green-400 ml-1 pixel-blink"></span>}
+                  {!isTypingDone && <span className="inline-block w-2 h-5 bg-green-400 ml-1 pixel-blink" />}
                 </p>
               </div>
 
@@ -125,6 +148,61 @@ export default function HeroSection() {
 
             </div>
 
+          </div>
+
+        </div>
+
+        {/* Interactive Pixel Battle Arena Banner (Forest Battle Scene) */}
+        <div className="pixel-box-emerald p-6 relative overflow-hidden bg-[#091a13]/90">
+          <div className="flex items-center justify-between border-b-2 border-emerald-500/40 pb-3 mb-4">
+            <div className="font-press text-xs text-emerald-300 flex items-center gap-2">
+              <Swords className="w-4 h-4 text-emerald-400" /> BATTLE SCENE 1: HUTAN MISTERIUS
+            </div>
+            <div className="font-press text-[10px] text-yellow-400">
+              AREA 1/5
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            
+            {/* Player Side */}
+            <div className="bg-black/60 border-2 border-emerald-600 p-4 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="text-4xl pixel-float">🗡️</div>
+                <div>
+                  <div className="font-press text-xs text-yellow-300">RAMA EKA S. (KESATRIA)</div>
+                  <div className="font-press text-[9px] text-green-400 mt-1">HP: 100/100</div>
+                </div>
+              </div>
+              <button
+                onClick={handleAttack}
+                className="pixel-btn pixel-btn-red py-2 px-3 text-[10px] font-press flex items-center gap-1 active:scale-95"
+              >
+                <Swords className="w-3.5 h-3.5" /> ATTACK!
+              </button>
+            </div>
+
+            {/* Monster Side */}
+            <div className="bg-black/60 border-2 border-red-600 p-4 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className={`text-4xl ${isAttacking ? 'animate-bounce text-red-500' : 'pixel-float'}`}>
+                  🐉
+                </div>
+                <div>
+                  <div className="font-press text-xs text-red-400">MONSTER HUTAN</div>
+                  <div className="font-press text-[9px] text-slate-300 mt-1">HP: {monsterHp}/100</div>
+                  <div className="pixel-bar-bg w-32 mt-1">
+                    <div className="pixel-bar-fill-hp bg-red-500" style={{ width: `${monsterHp}%` }} />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Combat Log */}
+          <div className="mt-4 bg-black p-3 border border-emerald-600/60 font-vt text-lg text-emerald-300 text-center">
+            {combatLog}
           </div>
 
         </div>
